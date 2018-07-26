@@ -4,18 +4,102 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <link rel="stylesheet" href="style.css">
-    <link href="//cdn.muicss.com/mui-0.5.1/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <link href="//cdn.muicss.com/mui-0.5.1/css/mui.min.css" rel="stylesheet" type="text/css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/es6-promise/3.2.1/es6-promise.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//cdn.muicss.com/mui-0.5.1/js/mui.min.js"></script>
     <script src="//goinggas.com/cdn/dashtimer/dashtimer.js"></script>
-
 </head>
-<body>
-<div id="revenue" style="font-size: 25px"></div>
-<div id="impresions" style="font-size: 25px"></div>
-<div id="visits" style="font-size: 25px"></div>
 
+<body>
+<div class="container">
+
+    <div id="revenue-circle">
+        <div class="revenue-container">
+            <div id="revenue"></div>
+            <div class="circle"></div>
+            <p class="circle-text">REVENUE</p>
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+        </div>
+
+
+        <div class="tablet">
+            <p class="text-tablet">Tablet</p>
+            <div class="data">
+                <p class="porcentage">60%</p>
+                <p class="money">120.000€</p>
+            </div>
+        </div>
+
+        <div class="smartphone">
+            <p class="text-smartphone">Smartphone</p>
+            <div class="data">
+                <p class="porcentage">40%</p>
+                <p class="money">80.000€</p>
+            </div>
+
+        </div>
+        <div class="horizontal-line-base"></div>
+    </div>
+
+
+    <div id="impresions-circle">
+
+        <div class="impresions-container">
+            <div id="impresions"></div>
+            <div class="circle"></div>
+            <p class="circle-text">IMPRESIONS</p>
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+        </div>
+
+        <div class="tablet">
+            <p class="text-tablet">Tablet</p>
+            <div class="data">
+                <p class="porcentage">40%</p>
+                <p class="money">20.000.000€</p>
+            </div>
+        </div>
+
+        <div class="smartphone">
+            <p class="text-smartphone">Smartphone</p>
+            <div class="data">
+                <p class="porcentage">60%</p>
+                <p class="money">30.000.000€</p>
+            </div>
+
+        </div>
+
+    </div>
+    <div id="visits-circle">
+        <div class="visits-container">
+            <div id="visits"></div>
+            <div class="circle"></div>
+            <p class="circle-text">VISITS</p>
+            <div class="vertical-line"></div>
+            <div class="horizontal-line"></div>
+        </div>
+
+
+        <div class="tablet">
+            <p class="text-tablet">Tablet</p>
+            <div class="data">
+                <p class="porcentage">80%</p>
+                <p class="money">480.000.000€</p>
+            </div>
+
+        </div>
+
+        <div class="smartphone">
+            <p class="text-smartphone">Smartphone</p>
+            <div class="data">
+                <p class="porcentage">20%</p>
+                <p class="money">120.000.000€</p>
+            </div>
+        </div>
+    </div>
+</div>
 <script>
     function formatearNumero(nStr) {
         nStr += '';
@@ -31,17 +115,17 @@
 
 
     var dt = new DashTimer('#revenue').init({
-        height:200,
-        width:200,
-        start:{
-            fill:'#3c6819',
-            innerRatio:.9,
-            outerRatio:1
+        height: 200,
+        width: 200,
+        start: {
+            fill: '#3c6819',
+            innerRatio: .9,
+            outerRatio: 1
         },
         finish: {
-            fill:'#3c6819',
-            innerRatio:.9,
-            outerRatio:1
+            fill: '#3c6819',
+            innerRatio: .9,
+            outerRatio: 1
         }
     }).setData([{
         immediate: {
@@ -59,23 +143,23 @@
         values: {
             show: true,
             decorate: function (d) {
-            d = Math.round(d/4 * 200000);
-                return formatearNumero(d);
+                d = Math.round(d / 4 * 200000);
+                return formatearNumero(d) + '€';
             },
         }
-    }]).start(3000,0,.4);
+    }]).start(3000, 0, .4);
     var dt = new DashTimer('#impresions').init({
-        height:200,
-        width:200,
-        start:{
-            fill:'#2d5466',
-            innerRatio:.9,
-            outerRatio:1
+        height: 200,
+        width: 200,
+        start: {
+            fill: '#2d5466',
+            innerRatio: .9,
+            outerRatio: 1
         },
         finish: {
-            fill:'#2d5466',
-            innerRatio:.9,
-            outerRatio:1
+            fill: '#2d5466',
+            innerRatio: .9,
+            outerRatio: 1
         }
     }).setData([{
         immediate: {
@@ -92,25 +176,25 @@
     }, {
         values: {
             show: true,
-            decorate:function (d) {
-                d = Math.floor(d/6 * 5000000);
-                return formatearNumero(d);
+            decorate: function (d) {
+                d = Math.floor(d / 6 * 5000000);
+                return formatearNumero(d) + '€';
             }
         }
-    }]).start(3000,0,.6);
+    }]).start(3000, 0, .6);
 
     var dt = new DashTimer('#visits').init({
-        height:200,
-        width:200,
-        start:{
-            fill:'#bd5924',
-            innerRatio:.9,
-            outerRatio:1
+        height: 200,
+        width: 200,
+        start: {
+            fill: '#bd5924',
+            innerRatio: .9,
+            outerRatio: 1
         },
         finish: {
-            fill:'#bd5924',
-            innerRatio:.9,
-            outerRatio:1
+            fill: '#bd5924',
+            innerRatio: .9,
+            outerRatio: 1
         }
     }).setData([{
         immediate: {
@@ -127,12 +211,12 @@
     }, {
         values: {
             show: true,
-            decorate:function (d) {
-                d = Math.floor(d/2 * 60000000);
-                return formatearNumero(d);
+            decorate: function (d) {
+                d = Math.floor(d / 2 * 60000000);
+                return formatearNumero(d) + '€';
             }
         }
-    }]).start(3000,0,.2);
+    }]).start(3000, 0, .2);
 
 </script>
 </body>

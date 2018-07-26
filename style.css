@@ -1,0 +1,155 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    padding-top: 100px;
+    padding-bottom: 100px;
+}
+
+.container {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    width: 80%;
+    margin: auto;
+}
+
+div#revenue-circle, div#impresions-circle, div#visits-circle {
+
+    margin: 15px 30px;
+    width: 100%;
+    max-width: 300px;
+    min-width: 320px;
+    border-bottom: 2px solid #ccc;
+}
+
+#revenue, #impresions, #visits {
+    font-size: 25px;
+    height: 200px;
+    width: 200px;
+}
+
+.data {
+    display: flex;
+    float: right;
+}
+
+.data .porcentage, .data .money {
+    display: inline-block;
+    flex-wrap: nowrap;
+    font-weight: bold;
+    font-size: larger;
+}
+
+.data .porcentage {
+    padding-right: 5px;
+    color: #999;
+}
+
+.data .money {
+    padding-left: 5px;
+    color: #ccc;
+}
+
+.circle {
+    display: flex;
+    position: absolute;
+    z-index: -1;
+    width: 170px;
+    height: 170px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #ffffff;
+    align-self: center;
+}
+
+.circle-text {
+    position: absolute;
+    align-self: center;
+    font-size: 20px;
+    color: #999;
+    top: 55px;
+}
+
+.vertical-line {
+    border-left: 2px solid #ccc;
+    height: 176px;
+    position: absolute;
+    align-self: center;
+    z-index: -3;
+}
+
+.horizontal-line {
+    border-left: 2px solid #ccc;
+    height: 176px;
+    position: absolute;
+    align-self: center;
+    z-index: -2;
+    transform: rotate(90deg);
+}
+
+.revenue-container, .impresions-container, .visits-container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.tablet .text-tablet {
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+}
+
+.tablet .data {
+    float: left;
+}
+
+.smartphone .text-smartphone {
+    font-weight: bold;
+    font-size: large;
+    margin: 0;
+}
+
+.tablet {
+    float: left;
+    display: inline-block;
+    width: 50%;
+    text-align: left;
+}
+
+.smartphone {
+    float: right;
+    display: inline;
+    width: 50%;
+    text-align: right;
+}
+
+#revenue-circle .text-smartphone {
+    color: #3c6819;
+}
+
+#impresions-circle .text-smartphone {
+    color: #2d5466;
+}
+
+#visits-circle .text-smartphone {
+    color: #bd5924;
+}
+
+#revenue-circle .text-tablet {
+    color: #8bd344;
+}
+
+#impresions-circle .text-tablet {
+    color: #6ecbe3;
+}
+
+#visits-circle .text-tablet {
+    color: #efc430;
+}
+
+
