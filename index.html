@@ -2,13 +2,14 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Marfeel</title>
+    <link rel="stylesheet" href="css/style.css">
     <link href="//cdn.muicss.com/mui-0.5.1/css/mui.min.css" rel="stylesheet" type="text/css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/es6-promise/3.2.1/es6-promise.min.js"></script>
     <script src="//d3js.org/d3.v3.min.js"></script>
     <script src="//cdn.muicss.com/mui-0.5.1/js/mui.min.js"></script>
     <script src="//goinggas.com/cdn/dashtimer/dashtimer.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.2/Chart.js"></script>
 </head>
 
 <body>
@@ -17,7 +18,11 @@
     <div id="revenue-circle">
         <div class="revenue-container">
             <div id="revenue"></div>
-            <div class="circle"></div>
+            <div class="circle">
+                <div class="semi-circle">
+                    <canvas id="revenueChart" width="200" height="120"></canvas>
+                </div>
+            </div>
             <p class="circle-text">REVENUE</p>
             <div class="vertical-line"></div>
             <div class="horizontal-line"></div>
@@ -43,12 +48,15 @@
         <div class="horizontal-line-base"></div>
     </div>
 
-
     <div id="impresions-circle">
 
         <div class="impresions-container">
             <div id="impresions"></div>
-            <div class="circle"></div>
+            <div class="circle">
+                <div class="semi-circle">
+                    <canvas id="impresionsChart" width="200" height="120"></canvas>
+                </div>
+            </div>
             <p class="circle-text">IMPRESIONS</p>
             <div class="vertical-line"></div>
             <div class="horizontal-line"></div>
@@ -72,15 +80,19 @@
         </div>
 
     </div>
+
     <div id="visits-circle">
         <div class="visits-container">
             <div id="visits"></div>
-            <div class="circle"></div>
+            <div class="circle">
+                <div class="semi-circle">
+                    <canvas id="visitsChart" width="200" height="120"></canvas>
+                </div>
+            </div>
             <p class="circle-text">VISITS</p>
             <div class="vertical-line"></div>
             <div class="horizontal-line"></div>
         </div>
-
 
         <div class="tablet">
             <p class="text-tablet">Tablet</p>
@@ -88,7 +100,6 @@
                 <p class="porcentage">80%</p>
                 <p class="money">480.000.000€</p>
             </div>
-
         </div>
 
         <div class="smartphone">
@@ -98,127 +109,16 @@
                 <p class="money">120.000.000€</p>
             </div>
         </div>
+
     </div>
+
 </div>
-<script>
-    function formatearNumero(nStr) {
-        nStr += '';
-        x = nStr.split('.');
-        x1 = x[0];
-        x2 = x.length > 1 ? ',' + x[1] : '';
-        var rgx = /(\d+)(\d{3})/;
-        while (rgx.test(x1)) {
-            x1 = x1.replace(rgx, '$1' + '.' + '$2');
-        }
-        return x1 + x2;
-    }
 
+<script src="js/chart-revenue.js"></script>
+<script src="js/chart-impresions.js"></script>
+<script src="js/chart-visits.js"></script>
+<script src="js/data-circles.js"></script>
 
-    var dt = new DashTimer('#revenue').init({
-        height: 200,
-        width: 200,
-        start: {
-            fill: '#3c6819',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: '#3c6819',
-            innerRatio: .9,
-            outerRatio: 1
-        }
-    }).setData([{
-        immediate: {
-            angle: true
-        },
-        start: {
-            angle: 1,
-            fill: '#8bd344'
-        },
-        finish: {
-            angle: 0,
-            fill: '#8bd344'
-        }
-    }, {
-        values: {
-            show: true,
-            decorate: function (d) {
-                d = Math.round(d / 4 * 200000);
-                return formatearNumero(d) + '€';
-            },
-        }
-    }]).start(3000, 0, .4);
-    var dt = new DashTimer('#impresions').init({
-        height: 200,
-        width: 200,
-        start: {
-            fill: '#2d5466',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: '#2d5466',
-            innerRatio: .9,
-            outerRatio: 1
-        }
-    }).setData([{
-        immediate: {
-            angle: true
-        },
-        start: {
-            angle: 1,
-            fill: '#6ecbe3'
-        },
-        finish: {
-            angle: 0,
-            fill: '#6ecbe3'
-        }
-    }, {
-        values: {
-            show: true,
-            decorate: function (d) {
-                d = Math.floor(d / 6 * 5000000);
-                return formatearNumero(d) + '€';
-            }
-        }
-    }]).start(3000, 0, .6);
-
-    var dt = new DashTimer('#visits').init({
-        height: 200,
-        width: 200,
-        start: {
-            fill: '#bd5924',
-            innerRatio: .9,
-            outerRatio: 1
-        },
-        finish: {
-            fill: '#bd5924',
-            innerRatio: .9,
-            outerRatio: 1
-        }
-    }).setData([{
-        immediate: {
-            angle: true
-        },
-        start: {
-            angle: 1,
-            fill: '#efc430'
-        },
-        finish: {
-            angle: 0,
-            fill: '#efc430'
-        }
-    }, {
-        values: {
-            show: true,
-            decorate: function (d) {
-                d = Math.floor(d / 2 * 60000000);
-                return formatearNumero(d) + '€';
-            }
-        }
-    }]).start(3000, 0, .2);
-
-</script>
 </body>
 </html>
 
